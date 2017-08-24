@@ -1,4 +1,5 @@
 const path = require('path')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const config = {
@@ -17,6 +18,7 @@ const config = {
         ]
     },
     plugins: [
+        new UglifyJSPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html'
         })
