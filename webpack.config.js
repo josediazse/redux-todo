@@ -1,28 +1,8 @@
-const path = require('path')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const commonConfig = require('./build-utils/webpack.common')
+const webpackMerge = require('webpack-merge')
 
-const config = {
-	entry: './src/index.js',
-	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: 'bundle.js'
-	},
-	module: {
-		rules: [
-			{
-				test: /\.(js|jsx)$/,
-				exclude: /node_modules/,
-				use: 'babel-loader'
-			}
-		]
-	},
-	plugins: [
-		new UglifyJSPlugin(),
-		new HtmlWebpackPlugin({
-			template: './src/index.html'
-		})
-	]
+module.exports = (env) => {
+	console.log(`Environment: ${env}`)
+	const envConfig = require(`./build-utils/webpack.${env}`)
+	return webpackMerge(commonConfig, envConfig)
 }
-
-module.exports = config
