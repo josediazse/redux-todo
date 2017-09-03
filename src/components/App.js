@@ -1,3 +1,13 @@
-const sum = (a,b) => a + b
+import React, { Component } from 'react';
 
-export default sum
+class App extends Component {
+  render() {
+    return (
+      <div>
+        App Home Page
+      </div>
+    );
+  }
+}
+
+export default App;

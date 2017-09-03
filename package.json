@@ -7,8 +7,8 @@
     "clean": "rimraf dist",
     "lint": "eslint src",
     "prepare": "npm run clean && npm run lint",
-    "build": "webpack",
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
