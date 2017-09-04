@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "lint": "eslint src",
-    "prepare": "npm run clean && npm run lint",
+    "lint": "eslint src __tests__",
     "test": "jest",
-    "build": "webpack --env.env=dev",
-    "start": "webpack-dev-server --inline"
+    "prepare": "npm run clean && npm run lint && npm run test",
+    "build": "npm run prepare && webpack --env.env=prod",
+    "start": "webpack-dev-server --inline --env.env=dev"
   },
   "keywords": [],
   "author": "",
@@ -26,7 +26,6 @@
     "html-webpack-plugin": "^2.30.1",
     "jest": "^20.0.4",
     "rimraf": "^2.6.1",
-    "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1",
     "webpack-merge": "^4.1.0"

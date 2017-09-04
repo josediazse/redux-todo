@@ -4,7 +4,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        Home Page
+        Home Main Page
       </div>
     );
   }
