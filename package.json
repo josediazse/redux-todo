@@ -1,7 +1,7 @@
 {
   "name": "redux-todo",
   "version": "1.0.0",
-  "description": "",
+  "description": "A feature rich todo progressive web app.",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",

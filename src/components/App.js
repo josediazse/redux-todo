@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react"
 
 class App extends Component {
   render() {
-    return (
-      <div>
-        Home Main Page
-      </div>
-    );
+    return <div>Home Main Page</div>
   }
 }
 
-export default App;
+export default App
