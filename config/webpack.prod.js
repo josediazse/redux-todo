@@ -1,4 +1,4 @@
-const webpack = require("webpack")
+const webpack = require('webpack')
 
 const config = {
   plugins: [new webpack.optimize.UglifyJsPlugin()]
