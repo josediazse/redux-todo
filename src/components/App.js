@@ -2,19 +2,20 @@ import React, { Component } from 'react'
 import InputForm from './InputForm'
 import FilterItems from './FilterItems'
 import TodoList from './TodoList'
-import { object } from 'prop-types'
+import { array, string } from 'prop-types'
 import styles from '../styles.css'
 
 export default class App extends Component {
   state = {
-    todos: this.props.initialState.todos,
-    visibilityFilter: this.props.initialState.visibilityFilter
+    todos: this.props.todos,
+    visibilityFilter: this.props.visibilityFilter
   }
 
   static propTypes = {
-    initialState: object.isRequired
+    todos: array,
+    visibilityFilter: string
   }
-
+  
   render() {
     return (
       <div style={styles} className="container">

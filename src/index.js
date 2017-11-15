@@ -19,6 +19,6 @@ let initialState = {
 }
 
 ReactDOM.render(
-  <App initialState={initialState} />,
+  <App {...initialState} />,
   document.getElementById('root')
 )
