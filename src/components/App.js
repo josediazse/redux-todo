@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import InputForm from './InputForm'
 import FilterItems from './FilterItems'
 import TodoList from './TodoList'
+import Stats from './Stats'
 import { array, string } from 'prop-types'
 import styles from '../styles.css'
 
@@ -12,16 +13,44 @@ export default class App extends Component {
   }
 
   static propTypes = {
-    todos: array,
-    visibilityFilter: string
+    todos: array.isRequired,
+    visibilityFilter: string.isRequired
   }
-  
+
+  static defaultProps = {
+    todos: [],
+    visibilityFilter: 'SHOW_ALL'
+  }
+
+  handleInput = text => {
+    const id = this.getNextTodoId()
+    this.setState(state => {
+      return {
+        todos: [
+          {
+            completed: false,
+            id: id,
+            text: text
+          },
+          ...state.todos
+        ]
+      }
+    })
+  }
+
+  getNextTodoId = () => {
+    const {todos} = this.state;
+    if (todos.length === 0) return 0
+    else return todos.map(t => t.id).reduce((a,b) => Math.max(a,b)) + 1
+  }
+
   render() {
     return (
       <div style={styles} className="container">
-        <InputForm />
+        <Stats todos={this.state.todos} />
+        <InputForm handleInput={this.handleInput} />
         <FilterItems />
-        <TodoList todoItems={this.state.todos} />
+        <TodoList todos={this.state.todos} />
       </div>
     )
   }

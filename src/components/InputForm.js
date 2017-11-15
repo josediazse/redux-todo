@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
+import { func } from 'prop-types'
 
 export default class InputForm extends Component {
   state = {
     todoText: ''
+  }
+
+  static propTypes = {
+    handleInput: func.isRequired
   }
 
   handleChange = e => {
@@ -12,10 +17,11 @@ export default class InputForm extends Component {
   }
 
   handleInput = e => {
-    if (e.key === 'Enter'){
+    if (e.key === 'Enter') {
       this.setState({
         todoText: ''
       })
+      this.props.handleInput(e.target.value)
       e.preventDefault()
     }
   }

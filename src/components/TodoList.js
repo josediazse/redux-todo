@@ -1,33 +1,31 @@
-import React, { Component } from 'react'
+import React from 'react'
 import TodoItem from './TodoItem'
 import { array } from 'prop-types'
 
-export default class TodoList extends Component {
-  state = {
-    todoItems: this.props.todoItems
-  }
-
-  static propTypes = {
-    todoItems: array
-  }
-
-  static defaultProps = {
-    todoItems: []
-  }
-
-  render() {
-    return (
-      <div>
-        <ul>
-          {this.state.todoItems.length > 0 ? (
-            this.state.todoItems.map(todo => {
-              return <TodoItem key={todo.id} text={todo.text} toggleFunc={() => {}} />
-            })
-          ) : (
-            <p>Great You have DONE them all!</p>
-          )}
-        </ul>
-      </div>
-    )
-  }
+TodoList.propTypes = {
+  todos: array.isRequired
 }
+
+TodoList.defaultProps = {
+  todos: []
+}
+
+function TodoList({ todos }) {
+  return (
+    <div>
+      <ul>
+        {todos.length > 0 ? (
+          todos.map(todo => {
+            return (
+              <TodoItem key={todo.id} text={todo.text} toggleFunc={() => {}} />
+            )
+          })
+        ) : (
+          <p>Great You have DONE them all!</p>
+        )}
+      </ul>
+    </div>
+  )
+}
+
+export default TodoList
