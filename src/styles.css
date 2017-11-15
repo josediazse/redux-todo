@@ -7,12 +7,14 @@ input {
   border-radius: 3px;
   text-align: center;
   font-size: 18px;
+  margin-bottom: 10px;
 }
 
 input[type='checkbox'] {
   height: 15px;
   width: 15px;
-  margin-bottom: 0px;
+  margin-right: 20px;
+  margin-bottom: 0;
 }
 
 .container {

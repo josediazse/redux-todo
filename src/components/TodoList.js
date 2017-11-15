@@ -21,7 +21,7 @@ export default class TodoList extends Component {
         <ul>
           {this.state.todoItems.length > 0 ? (
             this.state.todoItems.map(todo => {
-              return <TodoItem key={todo} text={todo} toggleFunc={() => {}} />
+              return <TodoItem key={todo.id} text={todo.text} toggleFunc={() => {}} />
             })
           ) : (
             <p>Great You have DONE them all!</p>

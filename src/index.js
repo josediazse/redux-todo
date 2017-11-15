@@ -1,5 +1,24 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import App from "./components/App"
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './components/App'
 
-ReactDOM.render(<App />, document.getElementById("root"))
+let initialState = {
+  todos: [
+    {
+      completed: false,
+      id: 0,
+      text: 'Hey'
+    },
+    {
+      completed: false,
+      id: 1,
+      text: 'You'
+    }
+  ],
+  visibilityFilter: 'SHOW_ACTIVE'
+}
+
+ReactDOM.render(
+  <App initialState={initialState} />,
+  document.getElementById('root')
+)
