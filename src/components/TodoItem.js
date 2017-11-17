@@ -1,13 +1,19 @@
 import React from 'react'
-import { string, func } from 'prop-types'
+import { func } from 'prop-types'
+import todoType from './Types'
 
 TodoItem.propTypes = {
-  text: string.isRequired,
+  todo: todoType.isRequired,
   toggleFunc: func.isRequired
 }
 
-function TodoItem({ toggleFunc, text }) {
-  return <li onClick={toggleFunc}>{text}</li>
+function TodoItem({ todo, toggleFunc }) {
+  const handleToggle = () => toggleFunc(todo)
+  return (
+    <li className={todo.completed ? 'done': ''} onClick={handleToggle}>
+      {todo.text}
+    </li>
+  )
 }
 
 export default TodoItem

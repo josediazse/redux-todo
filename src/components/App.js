@@ -39,9 +39,13 @@ export default class App extends Component {
   }
 
   getNextTodoId = () => {
-    const {todos} = this.state;
+    const { todos } = this.state
     if (todos.length === 0) return 0
-    else return todos.map(t => t.id).reduce((a,b) => Math.max(a,b)) + 1
+    else return todos.map(t => t.id).reduce((a, b) => Math.max(a, b)) + 1
+  }
+
+  handleToggleTodo = (e) => {
+    console.log(e)
   }
 
   render() {
@@ -50,7 +54,7 @@ export default class App extends Component {
         <Stats todos={this.state.todos} />
         <InputForm handleInput={this.handleInput} />
         <FilterItems />
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} toogleFunc={this.handleToggleTodo} />
       </div>
     )
   }

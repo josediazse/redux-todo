@@ -24,3 +24,7 @@ input[type='checkbox'] {
   align-items: center;
   min-height: 600px;
 }
+
+.done{
+  text-decoration: line-through;
+}

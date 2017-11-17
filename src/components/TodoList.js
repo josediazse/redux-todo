@@ -1,23 +1,25 @@
 import React from 'react'
 import TodoItem from './TodoItem'
-import { array } from 'prop-types'
+import {arrayOf, func } from 'prop-types'
+import todoType from './Types'
 
 TodoList.propTypes = {
-  todos: array.isRequired
+  todos:arrayOf(todoType).isRequired,
+  toogleFunc: func.isRequired
 }
 
 TodoList.defaultProps = {
   todos: []
 }
 
-function TodoList({ todos }) {
+function TodoList({ todos, toogleFunc }) {
   return (
     <div>
       <ul>
         {todos.length > 0 ? (
           todos.map(todo => {
             return (
-              <TodoItem key={todo.id} text={todo.text} toggleFunc={() => {}} />
+              <TodoItem key={todo.id} todo={todo} toggleFunc={toogleFunc} />
             )
           })
         ) : (
