@@ -44,11 +44,10 @@ export default class App extends Component {
     else return todos.map(t => t.id).reduce((a, b) => Math.max(a, b)) + 1
   }
 
-  handleToggleTodo = (todo) => {
-    const updatedTodos = this.state.todos;
+  handleToggleTodo = todo => {
+    const updatedTodos = this.state.todos
     updatedTodos.forEach(t => {
-      if(t.id === todo.id)
-        t.completed = !t.completed;
+      if (t.id === todo.id) t.completed = !t.completed
     })
     this.setState({
       todos: updatedTodos
@@ -56,12 +55,13 @@ export default class App extends Component {
   }
 
   render() {
+    const { todos } = this.state
     return (
       <div style={styles} className="container">
-        <Stats todos={this.state.todos} />
+        <Stats todos={todos} />
         <InputForm handleInput={this.handleInput} />
         <FilterItems />
-        <TodoList todos={this.state.todos} toogleFunc={this.handleToggleTodo} />
+        <TodoList todos={todos} toogleFunc={this.handleToggleTodo} />
       </div>
     )
   }

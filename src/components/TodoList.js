@@ -1,10 +1,10 @@
 import React from 'react'
 import TodoItem from './TodoItem'
-import {arrayOf, func } from 'prop-types'
+import { arrayOf, func } from 'prop-types'
 import todoType from './Types'
 
 TodoList.propTypes = {
-  todos:arrayOf(todoType).isRequired,
+  todos: arrayOf(todoType).isRequired,
   toogleFunc: func.isRequired
 }
 
