@@ -6,7 +6,7 @@ Stats.propTypes = {
 }
 
 function Stats({ todos }) {
-  const done = todos.length
+  const done = todos.filter(t => t.completed === true).length
   const pending = todos.filter(t => t.completed === false).length
   return <div>{`Done: ${done}  Pending: ${pending}`}</div>
 }

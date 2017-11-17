@@ -44,8 +44,15 @@ export default class App extends Component {
     else return todos.map(t => t.id).reduce((a, b) => Math.max(a, b)) + 1
   }
 
-  handleToggleTodo = (e) => {
-    console.log(e)
+  handleToggleTodo = (todo) => {
+    const updatedTodos = this.state.todos;
+    updatedTodos.forEach(t => {
+      if(t.id === todo.id)
+        t.completed = !t.completed;
+    })
+    this.setState({
+      todos: updatedTodos
+    })
   }
 
   render() {
