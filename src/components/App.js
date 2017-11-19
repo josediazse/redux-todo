@@ -61,11 +61,12 @@ export default class App extends Component {
   }
 
   applyVisibilityFilter = () => {
-    if (this.state.visibilityFilter === 'ALL') return this.state.todos
-    else if (this.state.visibilityFilter === 'DONE')
-      return this.state.todos.filter(t => t.completed === true)
-    else if (this.state.visibilityFilter === 'PENDING')
-      return this.state.todos.filter(t => t.completed === false)
+    const { visibilityFilter, todos } = this.state
+    if (visibilityFilter === 'ALL') return todos
+    else if (visibilityFilter === 'DONE')
+      return todos.filter(t => t.completed === true)
+    else if (visibilityFilter === 'PENDING')
+      return todos.filter(t => t.completed === false)
   }
 
   render() {
