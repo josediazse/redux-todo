@@ -10,7 +10,7 @@ input {
   margin-bottom: 10px;
 }
 
-input[type='checkbox'] {
+input[type='radio'] {
   height: 15px;
   width: 15px;
   margin-right: 20px;

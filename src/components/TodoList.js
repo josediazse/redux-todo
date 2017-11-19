@@ -23,7 +23,7 @@ function TodoList({ todos, toogleFunc }) {
             )
           })
         ) : (
-          <p>Great You have DONE them all!</p>
+          <p>Nothing TODO!</p>
         )}
       </ul>
     </div>

@@ -19,7 +19,7 @@ export default class App extends Component {
 
   static defaultProps = {
     todos: [],
-    visibilityFilter: 'SHOW_ALL'
+    visibilityFilter: 'ALL'
   }
 
   handleInput = text => {
@@ -54,13 +54,27 @@ export default class App extends Component {
     })
   }
 
+  updateVisibilityFilter = filter => {
+    this.setState({
+      visibilityFilter: filter.target.value
+    })
+  }
+
+  applyVisibilityFilter = () => {
+    if (this.state.visibilityFilter === 'ALL') return this.state.todos
+    else if (this.state.visibilityFilter === 'DONE')
+      return this.state.todos.filter(t => t.completed === true)
+    else if (this.state.visibilityFilter === 'PENDING')
+      return this.state.todos.filter(t => t.completed === false)
+  }
+
   render() {
-    const { todos } = this.state
+    const todos = this.applyVisibilityFilter()
     return (
       <div style={styles} className="container">
         <Stats todos={todos} />
         <InputForm handleInput={this.handleInput} />
-        <FilterItems />
+        <FilterItems handleChange={this.updateVisibilityFilter} />
         <TodoList todos={todos} toogleFunc={this.handleToggleTodo} />
       </div>
     )
