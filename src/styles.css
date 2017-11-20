@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 18px;
 }
 
@@ -27,4 +27,8 @@ input[type='radio'] {
 
 .done{
   text-decoration: line-through;
+}
+
+.statsElement {
+  margin-right: 30px;
 }
