@@ -16,10 +16,11 @@ Stats.propTypes = {
 
 function Stats({ todos }) {
   const done = todos.filter(t => t.completed === true).length
+  const pending = todos.filter(t => t.completed === false).length
   return (
-    <div>
+    <div className="stats">
       <StatsElement Icon={DoneIcon} value={done}/>
-      <StatsElement Icon={DoneIcon} value={todos-length - done}/>
+      <StatsElement Icon={DoneIcon} value={pending}/>
     </div>
   )
 }

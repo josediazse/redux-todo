@@ -29,6 +29,10 @@ input[type='radio'] {
   text-decoration: line-through;
 }
 
+.stats {
+  margin-bottom: 10px;
+}
+
 .statsElement {
   margin-right: 30px;
 }
