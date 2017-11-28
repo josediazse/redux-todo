@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "babel-eslint", /* Only to be used while using experimental features of ES */
   "env": {
     "node": true,
     "browser": true,
