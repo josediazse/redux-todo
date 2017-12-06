@@ -1,11 +1,12 @@
 import React from 'react'
 import { array } from 'prop-types'
-import DoneIcon from 'material-ui/svg-icons/action/done'
+import DoneIcon from 'material-ui/svg-icons/action/assignment-turned-in'
+import PendingIcon from 'material-ui/svg-icons/action/assignment'
 
-const StatsElement = ({Icon, value}) => {
+const StatsElement = ({Icon, value, text}) => {
   return (
     <span className="statsElement">
-      <Icon/> {value}
+      <Icon/> {text} {value}
     </span>
   )
 }
@@ -19,8 +20,8 @@ function Stats({ todos }) {
   const pending = todos.filter(t => t.completed === false).length
   return (
     <div className="stats">
-      <StatsElement Icon={DoneIcon} value={done}/>
-      <StatsElement Icon={DoneIcon} value={pending}/>
+      <StatsElement Icon={DoneIcon} value={done} text='Done'/>
+      <StatsElement Icon={PendingIcon} value={pending} text='Pending'/>
     </div>
   )
 }
