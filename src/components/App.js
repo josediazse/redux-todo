@@ -73,7 +73,7 @@ export default class App extends Component {
     const todos = this.applyVisibilityFilter()
     return (
       <div style={styles} className="container">
-        <Stats todos={todos} />
+        <Stats todos={this.state.todos} />
         <InputForm handleInput={this.handleInput} />
         <FilterItems handleChange={this.updateVisibilityFilter} />
         <TodoList todos={todos} toogleFunc={this.handleToggleTodo} />
