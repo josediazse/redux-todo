@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint src __tests__",
-    "test": "jest",
+    "test": "jest --watch",
     "prepare": "npm run clean && npm run lint && npm run test",
     "build": "npm run prepare && webpack --env.env=prod",
     "start": "webpack-dev-server --inline --env.env=dev"
@@ -25,6 +25,7 @@
     "babel-preset-react": "^6.24.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
+    "deep-freeze": "0.0.1",
     "eslint": "^4.6.0",
     "eslint-plugin-react": "^7.3.0",
     "html-webpack-plugin": "^2.30.1",
