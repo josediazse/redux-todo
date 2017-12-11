@@ -3,77 +3,63 @@ import InputForm from './InputForm'
 import FilterItems from './FilterItems'
 import TodoList from './TodoList'
 import Stats from './Stats'
-import { array, string } from 'prop-types'
+import { array, string, object } from 'prop-types'
 import styles from '../styles.css'
 
 export default class App extends Component {
-  state = {
-    todos: this.props.todos,
-    visibilityFilter: this.props.visibilityFilter
-  }
-
   static propTypes = {
     todos: array.isRequired,
-    visibilityFilter: string.isRequired
-  }
-
-  static defaultProps = {
-    todos: [],
-    visibilityFilter: 'ALL'
+    visibilityFilter: string.isRequired,
+    store: object.isRequired
   }
 
   handleInput = text => {
     const id = this.getNextTodoId()
-    this.setState(state => {
-      return {
-        todos: [
-          {
-            completed: false,
-            id: id,
-            text: text
-          },
-          ...state.todos
-        ]
-      }
+    this.dispatch({
+      type: 'ADD_TODO',
+      id: id,
+      text: text
     })
   }
 
-  getNextTodoId = () => {
-    const { todos } = this.state
-    if (todos.length === 0) return 0
-    else return todos.map(t => t.id).reduce((a, b) => Math.max(a, b)) + 1
+  dispatch = action => {
+    this.props.store.dispatch(action)
   }
 
   handleToggleTodo = todo => {
-    const updatedTodos = this.state.todos
-    updatedTodos.forEach(t => {
-      if (t.id === todo.id) t.completed = !t.completed
-    })
-    this.setState({
-      todos: updatedTodos
+    this.dispatch({
+      type: 'TOGGLE_TODO',
+      id: todo.id
     })
   }
 
   updateVisibilityFilter = filter => {
-    this.setState({
-      visibilityFilter: filter.target.value
+    this.dispatch({
+      type:'SET_VISIBILITY_FILTER',
+      filter: filter.target.value
     })
   }
 
   applyVisibilityFilter = () => {
-    const { visibilityFilter, todos } = this.state
-    if (visibilityFilter === 'ALL') return todos
+    const { visibilityFilter, todos } = this.props
+    if (visibilityFilter === 'SHOW_ALL') return todos
     else if (visibilityFilter === 'DONE')
       return todos.filter(t => t.completed === true)
     else if (visibilityFilter === 'PENDING')
       return todos.filter(t => t.completed === false)
   }
 
+  getNextTodoId = () => {
+    const { todos } = this.props
+    if (todos.length === 0) return 0
+    else return todos.map(t => t.id).reduce((a, b) => Math.max(a, b)) + 1
+  }
+
   render() {
     const todos = this.applyVisibilityFilter()
     return (
       <div style={styles} className="container">
-        <Stats todos={this.state.todos} />
+        <Stats todos={this.props.todos} />
         <InputForm handleInput={this.handleInput} />
         <FilterItems handleChange={this.updateVisibilityFilter} />
         <TodoList todos={todos} toogleFunc={this.handleToggleTodo} />

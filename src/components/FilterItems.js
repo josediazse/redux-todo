@@ -12,7 +12,7 @@ export default class FilterItems extends Component {
         <label htmlFor="all">All</label>
         <input
           id="all"
-          value="ALL"
+          value="SHOW_ALL"
           name="visibilityFilterButton"
           onClick={this.props.handleChange}
           type="radio"
