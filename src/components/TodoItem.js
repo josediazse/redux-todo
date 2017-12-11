@@ -8,9 +8,11 @@ TodoItem.propTypes = {
 }
 
 function TodoItem({ todo, toggleFunc }) {
-  const handleToggle = () => toggleFunc(todo)
   return (
-    <li className={todo.completed ? 'done' : ''} onClick={handleToggle}>
+    <li
+      className={todo.completed ? 'done' : ''}
+      onClick={() => toggleFunc(todo)}
+    >
       {todo.text}
     </li>
   )
