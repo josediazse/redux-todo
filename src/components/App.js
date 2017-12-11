@@ -39,13 +39,15 @@ export default class App extends Component {
     this.props.store.dispatch(action)
   }
 
-  applyVisibilityFilter = () => {
-    const { visibilityFilter, todos } = this.props
-    if (visibilityFilter === 'SHOW_ALL') return todos
-    else if (visibilityFilter === 'DONE')
-      return todos.filter(t => t.completed === true)
-    else if (visibilityFilter === 'PENDING')
-      return todos.filter(t => t.completed === false)
+  applyVisibilityFilter = ({visibilityFilter, todos}) => {
+    switch (visibilityFilter) {
+      case 'SHOW_ALL':
+        return todos
+      case 'DONE':
+        return todos.filter(t => t.completed === true)
+      case 'PENDING':
+        return todos.filter(t => t.completed === false)
+    }
   }
 
   getNextTodoId = () => {
@@ -55,7 +57,7 @@ export default class App extends Component {
   }
 
   render() {
-    const todos = this.applyVisibilityFilter()
+    const todos = this.applyVisibilityFilter(this.props)
     return (
       <div style={styles} className="container">
         <Stats todos={this.props.todos} />

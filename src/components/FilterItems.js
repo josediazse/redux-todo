@@ -1,41 +1,36 @@
-import React, { Component } from 'react'
-import { func } from 'prop-types'
+import React from 'react'
 
-export default class FilterItems extends Component {
-  static propTypes = {
-    handleChange: func.isRequired
-  }
+const FilterItems = ({ handleChange }) => {
+  return (
+    <div>
+      <label htmlFor="all">All</label>
+      <input
+        id="all"
+        value="SHOW_ALL"
+        name="visibilityFilterButton"
+        onClick={handleChange}
+        type="radio"
+      />
 
-  render() {
-    return (
-      <div>
-        <label htmlFor="all">All</label>
-        <input
-          id="all"
-          value="SHOW_ALL"
-          name="visibilityFilterButton"
-          onClick={this.props.handleChange}
-          type="radio"
-        />
+      <label htmlFor="done">Done</label>
+      <input
+        id="done"
+        value="DONE"
+        name="visibilityFilterButton"
+        onClick={handleChange}
+        type="radio"
+      />
 
-        <label htmlFor="done">Done</label>
-        <input
-          id="done"
-          value="DONE"
-          name="visibilityFilterButton"
-          onClick={this.props.handleChange}
-          type="radio"
-        />
-
-        <label htmlFor="pending">Pending</label>
-        <input
-          id="pending"
-          value="PENDING"
-          name="visibilityFilterButton"
-          onClick={this.props.handleChange}
-          type="radio"
-        />
-      </div>
-    )
-  }
+      <label htmlFor="pending">Pending</label>
+      <input
+        id="pending"
+        value="PENDING"
+        name="visibilityFilterButton"
+        onClick={handleChange}
+        type="radio"
+      />
+    </div>
+  )
 }
+
+export default FilterItems
