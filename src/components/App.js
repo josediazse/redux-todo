@@ -14,16 +14,11 @@ export default class App extends Component {
   }
 
   handleInput = text => {
-    const id = this.getNextTodoId()
     this.dispatch({
       type: 'ADD_TODO',
-      id: id,
+      id: this.getNextTodoId(),
       text: text
     })
-  }
-
-  dispatch = action => {
-    this.props.store.dispatch(action)
   }
 
   handleToggleTodo = todo => {
@@ -35,9 +30,13 @@ export default class App extends Component {
 
   updateVisibilityFilter = filter => {
     this.dispatch({
-      type:'SET_VISIBILITY_FILTER',
+      type: 'SET_VISIBILITY_FILTER',
       filter: filter.target.value
     })
+  }
+
+  dispatch = action => {
+    this.props.store.dispatch(action)
   }
 
   applyVisibilityFilter = () => {

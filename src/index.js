@@ -4,12 +4,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import App from './components/App'
 import { createStore, combineReducers } from 'redux'
 
-const MyApp = () => (
-  <MuiThemeProvider>
-    <App store={store} {...store.getState()} />
-  </MuiThemeProvider>
-)
-
 const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -56,6 +50,12 @@ const store = createStore(
     todos,
     visibilityFilter
   })
+)
+
+const MyApp = () => (
+  <MuiThemeProvider>
+    <App store={store} {...store.getState()} />
+  </MuiThemeProvider>
 )
 
 const render = () => {

@@ -18,10 +18,12 @@ export default class InputForm extends Component {
 
   handleInput = e => {
     if (e.key === 'Enter') {
-      this.setState({
-        todoText: ''
-      })
-      this.props.handleInput(e.target.value)
+      if (e.target.value) {
+        this.setState({
+          todoText: ''
+        })
+        this.props.handleInput(e.target.value)
+      }
       e.preventDefault()
     }
   }
